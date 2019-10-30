@@ -1,0 +1,19 @@
+
+
+.backAdd{
+   padding: 20px;
+   /* margin: 200px; */
+   /* margin-top:  5%;
+   margin-left: 30%; */
+   margin: 122px auto;
+   border-radius: 5%;
+   border: 1px solid black ;
+   width: 30%;
+   
+}
+h4{
+    color: darkgreen;
+}
+.btn{
+    margin-top: 10px;
+}
