@@ -3,23 +3,23 @@ const cors = require("cors");
 const DB = require("./db");
 const app = express();
 app.use(cors());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 // to run req.body
 app.use(express.json());
 
-app.use('/', express.static('public'));
+// app.use('/', express.static('public'));
 
-app.get("/", (req, res) => {
-  // let x = 2 * 2;
-  res.json("server is working");
-});
+// app.get("/", (req, res) => {
+//   // let x = 2 * 2;
+//   res.json("server is working");
+// });
 // Get all Database
 app.get("/getdata", (req, res) => {
   DB.Repo(repo => {
@@ -55,6 +55,13 @@ app.get("/futher", (req, res) => {
     res.json(repo);
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => console.log(`Server listening to ${PORT}`));

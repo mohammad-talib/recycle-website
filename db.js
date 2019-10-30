@@ -7,7 +7,10 @@ const mongoose = require("mongoose");
 mongoose.connect(
   "mongodb+srv://mohammed:mohammed@recycle-web-q5mwd.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true }
-);
+).then(() => {
+  console.log("Connection to the Atlas Cluster is successful!");
+})
+.catch(err => console.error(err));
 
 const db = mongoose.connection;
 db.on("error", function() {

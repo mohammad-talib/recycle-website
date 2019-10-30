@@ -11,7 +11,7 @@ import Admin from "./components/Admin";
 import Header from "./components/Header";
 import Landingpage from "./components/Landingpage/Landingpage";
 import Footer from './components/Footer/footer';
-import Futsher from "./components/Futsher/Futsher";
+// import Futsher from "./components/Futsher/Futsher";
 
 class App extends Component {
   state = {
@@ -26,7 +26,7 @@ class App extends Component {
   }
   // futher=()=>{
   //   axios
-  //     .get("http://localhost:9000/futher")
+  //     .get("/futher")
   //   {<Futsher/>}
   // };
  
@@ -35,7 +35,7 @@ class App extends Component {
 
   //   // Make a request for a user with a given ID
   //   axios
-  //     .get("http://localhost:9000/getoffer")
+  //     .get("/getoffer")
   //     .then(({ data }) => {
   //       // handle success
   //       console.log(data);
@@ -51,7 +51,7 @@ class App extends Component {
 
   getData = () => {
     axios
-      .get("http://localhost:9000/getdata")
+      .get("/getdata")
       .then(({ data }) => {
         console.log(data);
         this.setState({
@@ -65,7 +65,7 @@ class App extends Component {
 
   addRegistration = user => {
     axios
-      .post("http://localhost:9000/registration", user)
+      .post("/registration", user)
       .then(({ data }) => {
         console.log("REGISTAR:", data);
         this.setState({ user: data });
@@ -78,7 +78,7 @@ class App extends Component {
   checkUser = object => {
     console.log("OBJECT :", object);
     axios
-      .post("http://localhost:9000/checkuser", object)
+      .post("/checkuser", object)
       .then(({ data }) => {
         console.log("DATA aaaa", data);
         this.setState({
@@ -93,7 +93,7 @@ class App extends Component {
 
   add = addedItem => {
     axios
-      .put(`http://localhost:9000/add`, addedItem)
+      .put(`/add`, addedItem)
       .then(({ data }) => {
         console.log("DATA FROM ADD: ", data);
         this.setState({ user: data });
